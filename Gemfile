@@ -21,6 +21,27 @@ group :assets do
 end
 
 gem 'jquery-rails'
+group :production do
+  gem 'therubyracer-heroku'
+  gem 'pg'
+end 
+
+gem 'activerecord-postgresql-adapter'
+
+group :development do
+	gem 'better_errors'
+	gem 'binding_of_caller'
+	gem 'meta_request'
+	gem 'debugger'
+end
+
+gem 'devise'
+gem 'rmagick'
+gem "paperclip"
+gem "paperclip-dropbox"
+gem "dropbox-sdk"
+gem "mail"
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
