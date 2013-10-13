@@ -5,3 +5,14 @@
 .carousel-inner > img{
   height:200px;
 }
+
+#wraper {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    margin-bottom: 70px;
+    margin-top: 25px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    text-align: center;
+}
