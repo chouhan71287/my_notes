@@ -22,7 +22,7 @@ end
 
 gem 'jquery-rails'
 group :production do
-  gem 'therubyracer-heroku'
+  #gem 'therubyracer-heroku'
   gem 'pg'
 end 
 
@@ -41,6 +41,13 @@ gem "paperclip"
 gem "paperclip-dropbox"
 gem "dropbox-sdk"
 gem "mail"
+
+gem "therubyracer"
+gem "execjs"
+gem "less-rails"   
+gem 'twitter-bootstrap-rails'
+gem 'jquery-rails'
+gem 'uglifier', '>= 1.0.3'
 
 
 # To use ActiveModel has_secure_password
