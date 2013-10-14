@@ -58,18 +58,18 @@
 							<li><a href="grid4b.html">Various B</a></li>
 						</ul>
 					</li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="grid6a.html">Login A</a></li>
-						</ul>
-					</li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Register <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="grid7a.html">Register A</a></li>
-						</ul>
-					</li>
+					<% unless signed_in? %>
+						<li class="dropdown">
+								<%= link_to "Login", new_user_session_path %>
+						</li>
+						<li class="dropdown">
+							<%= link_to "Registration", new_user_registration_path %>
+						</li>
+					<%else%>
+						<li class="dropdown">
+							<%= link_to "Logout", destroy_user_session_path, :method=>"delete" %>
+						</li>
+					<% end %>
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Contact <b class="caret"></b></a>
 						<ul class="dropdown-menu">

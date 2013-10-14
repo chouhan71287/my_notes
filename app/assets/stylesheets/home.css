@@ -16,3 +16,29 @@
     padding-top: 25px;
     text-align: center;
 }
+
+#login-wraper{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    display: block;
+    height: 320px;
+    left: 50%;
+    margin-bottom: 47px;
+    margin-left: -235px;
+    padding: 25px;
+    position: relative;
+    text-align: center;
+    top: 50%;
+    width: 420px;
+    margin-top: 10px;
+}
+
+.btn-black {
+    background-color: #222222;
+    background-image: none;
+    box-shadow: none;
+    color: #FFFFFF;
+    padding: 5px 20px;
+    text-shadow: none;
+}

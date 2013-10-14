@@ -1,18 +1,67 @@
-<h2>Sign up</h2>
+<div class="container">
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+		<div class="row">
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+			<div class="span6">
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+				<div class="register-info-wraper">
+					<div id="register-info">
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+						<h1>Use the Form behind for FREE Registration</h1>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+						<ul>
+							<li>It's Free</li>
+							<li>What are you waiting for?</li>
+							<li>Are you still reading?</li>
+							<li>Move on!</li>
+						</ul>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+					</div>
+				</div>
 
-<%= render "devise/shared/links" %>
+			</div>
+
+			<div class="span6">
+				<div id="wraper">
+						<%= devise_error_messages! %>
+						<legend>Register</legend>
+
+						<div class="body">
+							<!-- first name -->
+							<div class="control-group control-inline">
+								<label for="full_name">Full Name</label>
+								<%= f.text_field :full_name,:class=>"input-huge", :autofocus => true %>
+							</div>
+							<!-- last name -->
+							<div class="control-group control-inline">
+								<label for="email">E-mail</label>
+								<%= f.email_field :email, :class=>"input-huge" %>
+							</div>
+							<!-- username -->
+							<label>Mobile</label>
+							<%= f.text_field :mobile, :class=>"input-huge" %>
+							<!-- email -->
+							<label>Password</label>
+							<%= f.password_field :password, :class=>"input-huge" %>
+							<!-- password -->
+							<label>Password Confirmation</label>
+							<%= f.password_field :password_confirmation, :class=>"input-huge" %>
+
+						</div>
+
+						<div class="footer">
+							<label class="checkbox inline">
+								<input type="checkbox" id="inlineCheckbox1" value="option1"> I agree but I will never read this
+							</label>
+							<br />
+							<%= f.submit "Registration", :class=>"btn btn-success" %> </br>
+							</br></br>Do have an account? <%= link_to "Login", new_user_session_path, :class=>"btn btn-black" %> 
+						</div>
+
+				</div>
+			</div>
+
+		</div>
+	<%end%>
+</div>
+
