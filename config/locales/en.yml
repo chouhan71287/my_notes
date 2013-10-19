@@ -2,4 +2,34 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      notes:
+        title: "Title"
+        mynotes_file_file_name: "File"
+        notes_avatar: "Cover image"
+        notes_avatar_content_type: "Cover image"
+    errors:
+      models:
+        notes:
+          attributes:
+            title:
+              blank: "can't be blank"
+            mynotes_file_file_name: "must be selected"
+  helpers:
+    actions: "Actions"
+    links:
+      back: "Back"
+      cancel: "Cancel"
+      confirm: "Are you sure?"
+      destroy: "Delete"
+      new: "New"
+      edit: "Edit"
+    titles:
+      edit: "Edit"
+      save: "Save"
+      new: "New"
+      delete: "Delete"
+  text:
+    cover_image_size: Image size less than or equal 100 bytes
+    upload_file_size: File size less than or equal 5 MB

@@ -1,7 +1,8 @@
 MyNotes::Application.routes.draw do
   
-  
   devise_for :users
+
+  resources :notes
 
   root :to => 'home#home'
 

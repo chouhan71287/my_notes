@@ -1,0 +1,71 @@
+<div class="container">
+    <div id="login-wraper">
+        <% if @notes.errors.any? %>
+            <div class="alert alert-error">
+                <button class="close" data-dismiss="alert">×</button>
+                <% @notes.errors.full_messages.each do |msg| %>
+                    <p><%= msg %></p>
+                <% end %>
+            </div>
+        <%end%>
+        <%= form_for @notes,:url => notes_path, :html => { :multipart => true } do |f| %>
+            <legend>Upload Notes</legend>
+        
+            <div class="body">
+                <div class="control-group control-inline">
+                    <%= f.label :title %>
+                    <%= f.text_field :title, :autofocus => true %>
+                </div>
+
+                <div class="control-group control-inline">
+                    <%= f.label :description %>
+                    <%= f.text_area :description,:rows=>5, :cols=>40 %>
+                </div>
+
+                <div class="control-group control-inline">
+                    <%= f.label :author %>
+                    <%= f.text_field :author %>
+                </div>
+
+                <div class="control-group control-inline">
+                    <%= f.label :notes_type %>
+                    <%= f.text_field :notes_type %>
+                </div>
+
+                <div class="control-group control-inline">
+                    <%= f.label :publish %>
+                    <%= f.text_field :publish %>
+                </div>
+
+                <div class="control-group control-inline">
+                    <%= f.label :price %>
+                    <%= f.text_field :price %>
+                </div>
+                
+                <div class="control-group control-inline">
+                    <%= label_tag 'Cover Image' %><h6> (<%= t(:text)[:cover_image_size] %>)</h6>
+                    <%= f.file_field :notes_avatar %>
+                </div>
+            </br>
+
+                <div class="control-group control-inline">
+                    <%= label_tag 'Upload Notes' %> <h6>(<%= t(:text)[:upload_file_size] %>)</h6>
+                    <%= f.file_field :mynotes_file %>
+                </div>
+
+            </div>
+        </br></br>
+            <div class="login-footer">
+              <%= f.submit "Upload", :class=>"btn-large btn-success" %>
+            </div>
+        
+        <%end%>
+    </div>
+
+</div>
+
+<div>
+      <%# @my_notes.each do |my_notes|%>
+       <%#=link_to "download", my_notes.mynotes_file.url(:download => true) %>
+    <%#end%>
+</div>

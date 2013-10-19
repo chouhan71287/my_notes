@@ -22,7 +22,7 @@
     border-radius: 15px 15px 15px 15px;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
     display: block;
-    height: 320px;
+    height: auto;
     left: 50%;
     margin-bottom: 47px;
     margin-left: -235px;

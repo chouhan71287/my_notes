@@ -50,6 +50,11 @@ gem 'jquery-rails'
 gem 'uglifier', '>= 1.0.3'
 gem "cancan"
 
+gem "paperclip"
+gem "paperclip-dropbox"
+gem "dropbox-sdk"
+
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
