@@ -34,6 +34,25 @@
     margin-top: 10px;
 }
 
+.public_notes_container {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 15px 15px 15px 15px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+    margin-bottom: 70px;
+    margin-top: 25px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    text-align: center;
+}
+
+.public_notes_container .span4{
+  margin-left: 10px;
+}
+
+.public_notes_container .row-fluid .span3{
+  margin-top: 10px;
+}
+
 .btn-black {
     background-color: #222222;
     background-image: none;
@@ -41,4 +60,8 @@
     color: #FFFFFF;
     padding: 5px 20px;
     text-shadow: none;
+}
+
+.public_notes_image{
+    height: 100px;
 }

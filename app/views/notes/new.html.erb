@@ -12,46 +12,47 @@
             <legend>Upload Notes</legend>
         
             <div class="body">
-                <div class="control-group control-inline">
-                    <%= f.label :title %>
-                    <%= f.text_field :title, :autofocus => true %>
-                </div>
+              <div class="control-group control-inline">
+                  <%= f.label :title %>
+                  <%= f.text_field :title, :autofocus => true %>
+              </div>
 
-                <div class="control-group control-inline">
-                    <%= f.label :description %>
-                    <%= f.text_area :description,:rows=>5, :cols=>40 %>
-                </div>
+              <div class="control-group control-inline">
+                  <%= f.label :description %>
+                  <%= f.text_area :description,:rows=>5, :cols=>40 %>
+              </div>
 
-                <div class="control-group control-inline">
-                    <%= f.label :author %>
-                    <%= f.text_field :author %>
-                </div>
+              <div class="control-group control-inline">
+                  <%= f.label :author %>
+                  <%= f.text_field :author %>
+              </div>
 
-                <div class="control-group control-inline">
-                    <%= f.label :notes_type %>
-                    <%= f.text_field :notes_type %>
-                </div>
+              <div class="control-group control-inline">
+                  <%= f.label :notes_type %>
+                  
+                  <%= f.select("notes_type_id", NotesType.all.collect {|p| [ p.name, p.id ]}) %>
+              </div>
 
-                <div class="control-group control-inline">
-                    <%= f.label :publish %>
-                    <%= f.text_field :publish %>
-                </div>
+              <div class="control-group control-inline">
+                  <%= f.label :publish %>
+                  <%= f.select :publish, options_for_select([["Yes",true],["No",false]]) %>
+              </div>
 
-                <div class="control-group control-inline">
-                    <%= f.label :price %>
-                    <%= f.text_field :price %>
-                </div>
-                
-                <div class="control-group control-inline">
-                    <%= label_tag 'Cover Image' %><h6> (<%= t(:text)[:cover_image_size] %>)</h6>
-                    <%= f.file_field :notes_avatar %>
-                </div>
-            </br>
+              <div class="control-group control-inline">
+                  <%= f.label :price %>
+                  <%= f.text_field :price %>
+              </div>
+              
+              <div class="control-group control-inline">
+                  <%= label_tag 'Cover Image' %><h6> (<%= t(:text)[:cover_image_size] %>)</h6>
+                  <%= f.file_field :notes_avatar %>
+              </div>
+              </br>
 
-                <div class="control-group control-inline">
-                    <%= label_tag 'Upload Notes' %> <h6>(<%= t(:text)[:upload_file_size] %>)</h6>
-                    <%= f.file_field :mynotes_file %>
-                </div>
+              <div class="control-group control-inline">
+                  <%= label_tag 'Upload Notes' %> <h6>(<%= t(:text)[:upload_file_size] %>)</h6>
+                  <%= f.file_field :mynotes_file %>
+              </div>
 
             </div>
         </br></br>

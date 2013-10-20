@@ -1,0 +1,16 @@
+<%= javascript_tag do -%>
+  $(window).load(function(){
+    $(".image_loading_ajax").each(function() {
+      var pnotes = $(this).attr("id");
+      $.ajax({
+      type: "GET",
+      url: "/notes/public_notes_image",
+        data: {public_notes:pnotes },
+        success: function(data){
+          $("#"+pnotes+" .image_ajax_loader").empty();
+          $("#"+pnotes).html(data)
+        }
+      });
+    });
+  });
+<% end %>

@@ -2,7 +2,14 @@ MyNotes::Application.routes.draw do
   
   devise_for :users
 
-  resources :notes
+  resources :notes do
+    collection do
+      get 'public_notes'
+      get 'public_notes_image'
+    end
+  end
+
+  resources :home
 
   root :to => 'home#home'
 
