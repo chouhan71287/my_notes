@@ -10,12 +10,7 @@
         <h4 class="muted text-center">Free download Notes</h4>
         <div class="row-fluid span12"> 
           <% @public_notes.each_with_index do |public_notes,index| %>
-            <%if ((index+1)%4==0 or index==0)%>
-              <div class="offset1 span2">
-            <%else%>
-              <div class="span2">
-            <%end%>
-            
+            <div class="offset1 span2">
               <div class="image_loading_ajax" id=<%= public_notes.id %> >
                 <div class="image_ajax_loader"><%= image_tag("ajax_loader.gif", :height=>"20px") %></div>
               </div>
@@ -33,12 +28,7 @@
         <h4 class="muted text-center">Purchase and Download Notes</h4>
         <div class="row-fluid"> 
           <% @chargeable_notes.each_with_index do |chargeable_note,index| %>
-            <%if ((index+1)%4==0 or index==0 )%>
-              <div class="offset1 span2">
-            <%else%>
-              <div class="span2">
-            <%end%>
-            
+            <div class="offset1 span2">
               <div class="image_loading_ajax" id=<%= chargeable_note.id %> >
                 <div class="pull-left image_ajax_loader"><%= image_tag("ajax_loader.gif", :height=>"20px") %></div>
               </div>
