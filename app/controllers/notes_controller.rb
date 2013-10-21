@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :only=>[:index,:new,:create]
 
   def index
   end

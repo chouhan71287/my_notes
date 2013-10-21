@@ -9,9 +9,10 @@
 <body>
 
   <%= render :partial=>"shared/menu" %>  
-  <%= render :partial=>"shared/slide" %>
-  <%= render :partial=>"shared/flash_msg" %>
+  <%#= render :partial=>"shared/slide" %>
   <div class="content">
+  <%= render :partial=>"shared/flash_msg" %>
+  <%= render :partial=>"shared/search_ebook" %>
   <%= yield %>
   </div>
 

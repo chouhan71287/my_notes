@@ -31,8 +31,8 @@ class Note < ActiveRecord::Base
 
     validates :description, length: { in: 50..500 }, :if => :description_is_blank?
 
-    scope :free_notes, lambda { where("price = ?", 0)}
-    scope :chargeable_notes, lambda { where("price != ?", 0)}
+    scope :free_notes, lambda { where("price = ? and publish = ?", 0, true)}
+    scope :chargeable_notes, lambda { where("price != ? and publish=?", 0, true)}
 
   def description_is_blank?
     !!self.description
