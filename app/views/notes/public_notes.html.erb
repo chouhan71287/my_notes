@@ -8,43 +8,58 @@
     <div class="span8">
       <div class="public_notes_container">
         <h4 class="muted text-center">Free download Notes</h4>
-        <div class="row-fluid span12"> 
-          <% @public_notes.each_with_index do |public_notes,index| %>
-            <div class="offset1 span2">
-              <div class="image_loading_ajax" id=<%= public_notes.id %> >
-                <div class="image_ajax_loader"><%= image_tag("ajax_loader.gif", :height=>"20px") %></div>
-              </div>
-              <div class="row-fluid span12"><%= truncate public_notes.description, length: 50 %></div>
-              <div class="row-fluid"> <a href="#" class="btn btn-success btn-small"><i class="icon-white icon-book"></i> Download!</a></div>
+        <div id="myCarousel" class="carousel slide row-fluid"> 
+          <div class="carousel-inner">
+            <div class="item active offset1">
+              <% @public_notes.each_with_index do |public_notes,index| %>
+                <%if (index)%4==0 and index!=0%>
+                  </div><div class="item offset1">    
+                <%end%>
+                  <div class="row-fluid span3">
+                    <div class="image_loading_ajax" id="<%= public_notes.id %>" >
+                      <div class="image_ajax_loader"><%= image_tag("ajax_loader.gif", :height=>"20px") %></div>
+                    </div>
+                    <div style="margin-top:10px;"><%= truncate public_notes.title, length: 50 %> </div>
+                    <div style="margin-top:10px;"><a href="#" class="btn btn-success btn-small"><i class="icon-white icon-book"></i> Download!</a></div>
+                  </div>
+              <%end%>  
             </div>
-            <%if ((index+1)%4==0)%>
-              </div> <div class="row-fluid"> 
-            <%end%>
-          <%end%>
-          </div> <!--close the last row -->
+          </div>
+          <!-- Carousel nav -->  
+          <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>  
+          <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a> 
+        </div>
       </div>
 
       <div class="public_notes_container">
         <h4 class="muted text-center">Purchase and Download Notes</h4>
-        <div class="row-fluid"> 
-          <% @chargeable_notes.each_with_index do |chargeable_note,index| %>
-            <div class="offset1 span2">
-              <div class="image_loading_ajax" id=<%= chargeable_note.id %> >
-                <div class="pull-left image_ajax_loader"><%= image_tag("ajax_loader.gif", :height=>"20px") %></div>
-              </div>
-              <div class="row-fluid span12 green_font margin-top-row-notes-price">RS <%=chargeable_note.price %> /-</div>
-              <div class="text-left row-fluid span12"><%= truncate chargeable_note.description, length: 50 %></div>
-              <div class="row-fluid"> <a href="#" class="btn btn-success btn-small"><i class="icon-white icon-book"></i> Buy!</a></div>
+        <div id="purhaseCarousel" class="carousel slide row-fluid"> 
+          <div class="carousel-inner">
+            <div class="item active offset1">
+              <%if @chargeable_notes.blank? %><h3 class="muted text-center">No Notes is available</h3> <%end%>
+              <% @chargeable_notes.each_with_index do |chargeable_note, index| %>
+                <%if (index)%4==0 and index!=0%>
+                  </div><div class="item offset1">    
+                <%end%>
+                <div class="row-fluid span3">
+                  <div class="image_loading_ajax" id="<%= chargeable_note.id %>" >
+                    <div class="image_ajax_loader"><%= image_tag("ajax_loader.gif", :height=>"20px") %></div>
+                  </div>
+                  <div class="green_font margin-top-row-notes-price">RS <%=chargeable_note.price %> /-</div>
+                  <div style="margin-top:10px;"><%= truncate chargeable_note.title, length: 50 %> </div>
+                  <div style="margin-top:10px;"><a href="#" class="btn btn-success btn-small"><i class="icon-white icon-book"></i> Buy!</a></div>
+                  </div>
+              <%end%>  
             </div>
-            <%if ((index+1)%4==0)%>
-              </div> <div class="row-fluid"> 
-            <%end%>
-          <%end%>
-          </div> <!--close the last row -->
+          </div>
+          <!-- Carousel nav -->  
+          <a class="carousel-control left" href="#purhaseCarousel" data-slide="prev">‹</a>  
+          <a class="carousel-control right" href="#purhaseCarousel" data-slide="next">›</a> 
+        </div>
       </div>
 
     </div>
-
+      
   <%= render :partial=>"notes/public_notes_image" %>
   </div>
 </div>
