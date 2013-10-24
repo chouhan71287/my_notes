@@ -10,6 +10,8 @@ MyNotes::Application.routes.draw do
     end
   end
 
+  post 'search', to: 'notes#search', as: :search
+
   resources :home
 
   root :to => 'home#home'

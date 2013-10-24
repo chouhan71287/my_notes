@@ -9,6 +9,7 @@ class NotesController < ApplicationController
   end
 
   def create
+    debugger
   	@notes = current_user.notes.build(params[:note])
   	if @notes.valid?
   	  @notes.save
@@ -33,13 +34,21 @@ class NotesController < ApplicationController
   end
 
   def free_download
-    if current_user
-      notes = Note.find(Note.decoding_notes_id(params["public_notes"]).to_i)
-      download_url = notes.mynotes_file.url(:download => true)
-      render :partial=>"free_download", :locals => { :download_url => download_url }
-    else
-      render :text=>"You need to sign in or sign up before continuing."
+    notes = Note.find(Note.decoding_notes_id(params["public_notes"]).to_i)
+    download_url = notes.mynotes_file.url(:download => true)
+    render :partial=>"free_download", :locals => { :download_url => download_url }
+  end
+
+  def search
+    is_search_for_free_notes = params[:q].downcase.include? "free"
+    if is_search_for_free_notes
+      splited_text = params[:q].split(" ")
+      index = splited_text.each_index.select{|i| splited_text[i] == 'free'}
+      splited_text.delete_at(index.first)
+      params[:q] = splited_text.join(" ")
     end
+    query = "%#{params[:q]}%"
+    @notes = Note.search_result(query, is_search_for_free_notes)
   end
 
 end

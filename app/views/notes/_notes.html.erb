@@ -1,0 +1,39 @@
+<div class="ajax_loader_image"></div>
+<div class="container-fluid">
+  <div class="row-fluid">
+    
+    <div class="span3">
+      This is vijay
+    </div>
+
+    <div class="span8">
+      <div class="public_notes_container">
+        <h4 class="muted text-center">Search Results</h4>
+        <!-- <abbr title="attribute">attr</abbr> -->
+        <%@notes.each do |note|%>
+          <div class="row-fluid border-below", style="margin-left:20px;">
+
+            <div style="width:160px;" class="span3 image_loading_ajax" id="<%= note.id %>" >
+                <div class="image_ajax_loader">
+                    <div class="loading_image_please_wait"><%= image_tag("loading_image.gif", :height=>"150px") %>
+                    </div>
+                </div>
+            </div>
+            <div class="span8">
+                <div class="row"><h4><%= truncate_text(note.title) %> </h4></div>
+                <div class="row"><%= note.author %> </div>
+                <div class="row" style="margin-top: 9px; width: 54%;"><%= truncate_text(note.description,70) %> </div>
+                <div class="row" style="margin-top: 9px;">
+                    <div class="green_font pull-left">RS <%= note.price %> /- </div>
+                    <div class="pull-right"> <%= link_to "#" ,:class=>"btn btn-success btn-small free_download",:public_notes_id=>encoding_notes_id(note.id) do%>
+                        <i class="icon-white icon-book"></i> Download! <%end%>
+                    </div>
+                </div>
+            </div>
+          </div>
+        <%end%>
+
+      </div>
+    </div>
+  </div>
+</div>

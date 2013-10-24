@@ -33,9 +33,15 @@ class Note < ActiveRecord::Base
 
     scope :free_notes, lambda { where("price = ? and publish = ?", 0, true)}
     scope :chargeable_notes, lambda { where("price != ? and publish=?", 0, true)}
+    scope :search, lambda{|q| where("lower(title) like ? or lower(description) like ? or lower(author) like ? or notes_type_id in (?)", q.downcase, q.downcase, q.downcase, NotesType.where('lower(name) like ?', q.downcase).map(&:id))}
 
   def description_is_blank?
     !!self.description
+  end
+
+  def self.search_result(q, is_free)
+    res = search(q)
+    is_free ? res.delete_if{|b| b.price > 0} : res
   end
 
   def self.decoding_notes_id(notes_id)

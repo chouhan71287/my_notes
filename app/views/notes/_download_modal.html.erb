@@ -1,0 +1,41 @@
+  <!-- Modal -->
+  <div class="modal fade" id="download_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">Thios i istetse
+          <div class="response-content">This is </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+<script>
+  $(document).ready(function(){
+    $(".free_download").on("click",function(){
+      $(".ajax_loader_image").show();
+      var public_notes = $(this).attr("public_notes_id");
+      $.ajax({
+        type: "GET",
+        url: "/notes/free_download",
+        data: {public_notes:public_notes },
+        success: function(data){
+          $(".ajax_loader_image").hide();
+          $(".modal-body").html(data);
+          $('#download_modal').modal('show');
+        },
+        error: function (response) {
+          $(".ajax_loader_image").hide();
+          $(".modal-body").html("Something happen wrong please try again");
+          $('#download_modal').modal('show');
+        }
+      });
+    });
+  });
+</script>
