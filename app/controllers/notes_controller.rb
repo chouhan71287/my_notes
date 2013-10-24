@@ -32,4 +32,14 @@ class NotesController < ApplicationController
     render :partial=>"notes/image_load", :locals => { :public_notes => notes.notes_avatar.url(:medium), :show_notes=>notes.id }
   end
 
+  def free_download
+    if current_user
+      notes = Note.find(Note.decoding_notes_id(params["public_notes"]).to_i)
+      download_url = notes.mynotes_file.url(:download => true)
+      render :partial=>"free_download", :locals => { :download_url => download_url }
+    else
+      render :text=>"You need to sign in or sign up before continuing."
+    end
+  end
+
 end

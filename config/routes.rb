@@ -6,6 +6,7 @@ MyNotes::Application.routes.draw do
     collection do
       get 'public_notes'
       get 'public_notes_image'
+      get 'free_download'
     end
   end
 

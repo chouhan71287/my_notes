@@ -38,6 +38,10 @@ class Note < ActiveRecord::Base
     !!self.description
   end
 
+  def self.decoding_notes_id(notes_id)
+     Base64.decode64(notes_id.to_s)
+  end
+
  private
 
   def randomize_file_name

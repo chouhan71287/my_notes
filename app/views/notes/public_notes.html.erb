@@ -1,3 +1,4 @@
+<div class="ajax_loader_image"></div>
 <div class="container-fluid">
   <div class="row-fluid">
     
@@ -17,10 +18,14 @@
                 <%end%>
                   <div class="row-fluid span3">
                     <div class="image_loading_ajax" id="<%= public_notes.id %>" >
-                      <div class="image_ajax_loader"><%= image_tag("ajax_loader.gif", :height=>"20px") %></div>
+                      <div class="image_ajax_loader"><div class="loading_image_please_wait"><%= image_tag("loading_image.gif", :height=>"150px") %></div>
+                      </div>
                     </div>
+                    <%#public_notes.mynotes_file.url(:download => true)%>
                     <div style="margin-top:10px;"><%= truncate public_notes.title, length: 50 %> </div>
-                    <div style="margin-top:10px;"><a href="#" class="btn btn-success btn-small"><i class="icon-white icon-book"></i> Download!</a></div>
+                    <div style="margin-top:10px;"><%= link_to "#" ,:class=>"btn btn-success btn-small free_download",:public_notes_id=>encoding_notes_id(public_notes.id) do%>
+                      <i class="icon-white icon-book"></i> Download! <%end%>
+                    </div>
                   </div>
               <%end%>  
             </div>
@@ -32,7 +37,7 @@
       </div>
 
       <div class="public_notes_container">
-        <h4 class="muted text-center">Purchase and Download Notes</h4>
+        <h4 class="text-center"><span class="muted cross_line">Purchase and Download Notes</span><span class="offer"><b style="color:blue !important"> Offer</b> Free download notes</span><%=image_tag "offer.gif" %></h4>
         <div id="purhaseCarousel" class="carousel slide row-fluid"> 
           <div class="carousel-inner">
             <div class="item active offset1">
@@ -43,7 +48,10 @@
                 <%end%>
                 <div class="row-fluid span3">
                   <div class="image_loading_ajax" id="<%= chargeable_note.id %>" >
-                    <div class="image_ajax_loader"><%= image_tag("ajax_loader.gif", :height=>"20px") %></div>
+                    <div class="image_ajax_loader">
+                      <div class="loading_image_please_wait"><%= image_tag("loading_image.gif", :height=>"150px") %>
+                      </div>
+                    </div>
                   </div>
                   <div class="green_font margin-top-row-notes-price">RS <%=chargeable_note.price %> /-</div>
                   <div style="margin-top:10px;"><%= truncate chargeable_note.title, length: 50 %> </div>
@@ -63,3 +71,45 @@
   <%= render :partial=>"notes/public_notes_image" %>
   </div>
 </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="download_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">Thios i istetse
+          <div class="response-content">This is </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+<script>
+  $(document).ready(function(){
+    $(".free_download").on("click",function(){
+      $(".ajax_loader_image").show();
+      var public_notes = $(this).attr("public_notes_id");
+      $.ajax({
+        type: "GET",
+        url: "/notes/free_download",
+        data: {public_notes:public_notes },
+        success: function(data){
+          $(".ajax_loader_image").hide();
+          $(".modal-body").html(data);
+          $('#download_modal').modal('show');
+        },
+        error: function (response) {
+          $(".ajax_loader_image").hide();
+          $(".modal-body").html("Something happen wrong please try again");
+          $('#download_modal').modal('show');
+        }
+      });
+    });
+  });
+</script>

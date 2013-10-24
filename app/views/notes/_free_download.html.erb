@@ -1,0 +1,10 @@
+<%= link_to "click here for downloading", download_url, :class=>"downloading_notes_from_url" %>
+
+<script>
+ $(document).ready(function(){
+ 	$(".downloading_notes_from_url").on("click",function(){
+		$(".modal-body").empty();
+		$('#download_modal').modal('hide')
+ 	});
+ });
+</script>

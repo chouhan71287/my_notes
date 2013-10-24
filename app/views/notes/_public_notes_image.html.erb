@@ -4,6 +4,7 @@
       var pnotes = $(this).attr("id");
       $.ajax({
       type: "GET",
+      async: true,
       url: "/notes/public_notes_image",
         data: {public_notes:pnotes },
         success: function(data){

@@ -6,4 +6,9 @@ module NotesHelper
     end
     options.html_safe
   end
+
+  def encoding_notes_id(notes_id)
+  	Base64.encode64(notes_id.to_s)
+  end
+
 end

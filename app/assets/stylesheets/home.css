@@ -170,3 +170,27 @@ button, input, select, textarea {
     font-size: 100%;
     margin: 0;
 }
+
+.ajax_loader_image{
+  background: url("download_ajax_loader.gif") no-repeat;
+  margin-left: 50%;
+  position: fixed;
+  height: 152px;
+  width: 338px;
+  z-index: 1;
+  display: none;
+}
+
+.loading_image_please_wait{
+    box-shadow: 5px 5px 5px -1px #808080;
+    height: 110px;
+    width: 120px;    
+}
+
+.cross_line{
+  text-decoration: line-through;
+}
+
+.offer{
+    color: green;
+}
